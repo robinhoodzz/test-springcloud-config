@@ -1,0 +1,17 @@
+spring: 
+  profiles: 
+    actives: 
+      - dev
+
+---
+spring: 
+  profiles: dev # 研发环境
+  application: 
+    name: springcloud-config-atguigu-dev
+
+
+---
+spring: 
+  profiles: test # 研发环境
+  application: 
+    name: springcloud-config-atguigu-test
