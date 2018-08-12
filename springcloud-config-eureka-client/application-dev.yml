@@ -1,0 +1,11 @@
+eureka:
+  instance:
+#    hostname: localhost # eureka 服务器名称(单机版时可以)
+    hostname: eureka7001 # eureka 服务器名称(集群时配置自己的域名或者hosts, hosts文件中 127.0.0.1  eureka7001)
+
+  client:
+    register-with-eureka: false # false表示不向注册中心注册自己 (物业公司不可能给自己交物业费)
+    fetch-registry: false # false表示自己端就是注册中心, 我的职责就是维护服务实例, 并不需要去检索服务 (自己不可能给自己借钱)
+    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ # 设置与eureka server交互的地址查询服务和注册服务
+      defaultZone: http://eureka7002:7002/eureka/,http://eureka7003:7003/eureka/ # 设置集群中另外2台eureka的地址

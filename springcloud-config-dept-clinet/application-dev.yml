@@ -1,0 +1,52 @@
+server:
+  port: 8001
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.atguigu.springcloud.entity
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+
+spring:
+  application:
+    name: springcloud-provider-dept
+
+# MYSQL
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: org.gjt.mm.mysql.Driver
+#    url: jdbc:mysql://10.13.4.22:3306/springcloud01
+#    username: root
+#    password: oracle
+#    dbcp2:
+#      min-idle: 5
+#      initial-size: 5
+#      max-total: 5
+#      max-wait-millis: 200
+
+# H2 DATABASE
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/test02
+    username: sa
+    password:
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+eureka:
+  client: # 客户端注册进eureka服务器列表
+    service-url:
+#      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001:7001/eureka,http://eureka7002:7002/eureka,http://eureka7003:7003/eureka
+  instance:
+#    instance-id: springcloud-instance-provider-dept-8001 # 自定义服务名称信息
+    prefer-ip-address: true # 访问路径可以显示IP地址
+
+info:
+  app.name: atguigu-springcloud
+  company.name: www.atguigu.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
